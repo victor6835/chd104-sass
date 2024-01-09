@@ -1,0 +1,129 @@
+//變數
+@use 'sass:math';
+@import "base/var";
+@import "base/color";
+@import "base/font";
+@import "base/reset";
+
+//函式
+@import "mixin/mixin";
+
+
+//組件
+@import "components/btn";
+@import "components/body";
+@import "components/card";
+@import "components/form";
+@import "components/rwd";
+@import "components/table";
+
+
+//layout
+@import "layout/header";
+@import "layout/footer";
+@import "layout/login";
+
+
+//page
+@import "page/index";
+@import "page/about";
+@import "page/product";
+
+//套件
+@import "plugin/bootstrap";
+// @import "var";
+// @import "var";
+// @import url() 這是css import
+
+
+
+// 取map值 
+h1 {
+    font-size: map-get($title, h3);
+}
+
+$class : h4;
+
+//轉型
+#{$class} {
+    font-size: 20px;
+}
+
+
+.a {
+  width: 10 + 10px ;
+  height:  100px - 10px;
+  margin:  100 * 10;
+  //新sass math (運算)規範
+  font : math.div(100 , 10) + px
+}
+
+
+// $w: 1200;
+
+// .full {
+//   @if $w == 100 {
+//      width: 100%;
+//   }
+//   @else if $w < 100{
+//     width: $w  * 1%;
+//     margin: auto;
+//   }
+//   @else {
+//      width: $w + px;
+//      margin: auto;
+//   }
+// }
+
+// 顏色
+// $color : false;
+
+// .color {
+//    @if $color {
+//      color : #333  
+//    } 
+//  background-color: #fff; 
+// }
+
+
+
+
+.layout_a {
+  @include layout(100);
+  background-color: #7afaf6;
+}
+
+.layout_b {
+  @include layout(1200);
+  background-color: #f477ff;
+
+}
+
+
+
+body {
+  font-size: 20px;
+ 
+  @include t(){
+    font-size: 60px;
+    color: red
+  }
+  @include m(){
+    font-size: 40px;
+    color:green
+  }
+}
+
+
+
+@for $i from 10 through 5 {
+   .box-#{$i} {
+    margin-top: $i + px;
+   }
+}
+
+@for $i from 1 through 10 {
+   .spacing-#{$i}{
+     margin-top: $i * 8px;
+   }
+}
